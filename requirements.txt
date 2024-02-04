@@ -1,0 +1,6 @@
+mysql-connector-python
+numpy
+matplotlib
+py-cord
+beautifulsoup4
+requests
