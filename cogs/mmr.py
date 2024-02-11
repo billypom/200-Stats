@@ -1,6 +1,7 @@
 from discord.ext import commands
 import DBA
 
+# test
 class MMR(commands.Cog):
     def __init__(self, client):
         self.client = client
