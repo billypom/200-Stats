@@ -20,20 +20,8 @@ for extension in config.COMMAND_EXTENSIONS:
 
 @client.event
 async def on_application_command_error(ctx, error):
-    if ctx.guild is None:
-        await ctx.respond('Sorry! My commands do not work in DMs.')
-        return
-    elif isinstance(error, commands.CommandOnCooldown):
-        await ctx.respond(error, delete_after=10)
-        return
-    elif isinstance(error, commands.MissingRole):
-        await ctx.respond('You do not have permission to use this command.', delete_after=20)
-        return
-    elif isinstance(error, commands.MissingAnyRole):
-        await ctx.respond('You do not have permission to use this command.', delete_after=20)
-        return
-    else:
         await ctx.respond('Sorry! An unknown error occurred.')
+        logging.warning(f'ERROR | ctx: {ctx} | error: {error}')
         return
     
 if __name__ == "__main__":
