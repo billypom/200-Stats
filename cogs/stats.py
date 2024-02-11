@@ -59,7 +59,7 @@ class StatsCog(commands.Cog):
             try:
                 with DBA.DBAccess(stats_db) as db:
                     tier_id = db.query('SELECT tier_id FROM tier WHERE tier_name = %s;', (tier,))[0][0]
-                    tier_channel = await self.client.fetch_channel(tier_id)
+                    tier_channel = f'tier-{tier}'
             except Exception as e:  # bad input 2 - no tier by that name
                 await ctx.respond("Invalid tier")
                 return
@@ -249,7 +249,6 @@ class StatsCog(commands.Cog):
         else:
             title += f' | Last {last}'
 
-        # channel = self.client.get_channel(ctx.channel.id)
         red, green, blue = 129, 120, 118
         if mmr >= 1500:
             red, green, blue = 230, 126, 34
